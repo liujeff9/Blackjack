@@ -12,7 +12,12 @@ The user can bet losing all money, doubling their money or gaining a factor of 1
 The code is split into three files, game.py contains all the code relating to the score and cards.
 The cards are a dictionary with all the cards mapped to their scoring value (Ace = 1). Then the keys
 are shuffle and placed into a list that behaves like stack. The user has a list storing their current
-hand. The deck is then reshuffle after every hand.
+hand. A full deck is then reshuffle after every hand.
+
+Initially, I wrote a recursive algorithm to calculate the score, where I tried 1 and 11 as the value
+of aces to get the best score. But then I realized that it was only possible to have one ace with the
+value 11, otherwise assume that we have more than one ace with value 11, 11 + 11 would automatically 
+be a bust, a contradiction. So I changed it to an iterative algorithm.
 
 The is written in python because I it more entertaining to write. Learning only Java throughout college
 made me confident with writing the language, but it is not as enjoyable. I really enjoy the syntax and the
