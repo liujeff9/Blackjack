@@ -7,6 +7,16 @@ class Test(unittest.TestCase):
         score = g.get_score(hand)
         self.assertEqual(score, 18)
 
+    def test_score_basic_2(self):   
+        hand = ["4 of Spades", "7 of Clubs", "10 of Hearts"]
+        score = g.get_score(hand)
+        self.assertEqual(score, 21)
+
+    def test_score_basic_3(self):   
+        hand = ["2 of Spades", "5 of Clubs", "8 of Hearts"]
+        score = g.get_score(hand)
+        self.assertEqual(score, 15)
+
     def test_score_three_aces(self):   
         hand = ["A of Clubs", "A of Clubs", "A of Hearts"]
         score = g.get_score(hand)
@@ -17,8 +27,8 @@ class Test(unittest.TestCase):
         score = g.get_score(hand)
         self.assertEqual(score, 21)
 
-    def test_score_two_aces_king(self):   
-        hand = ["A of Diamonds", "K of Hearts", "A of Spades"]
+    def test_score_two_aces_jack(self):   
+        hand = ["A of Diamonds", "J of Hearts", "A of Spades"]
         score = g.get_score(hand)
         self.assertEqual(score, 12)
 
