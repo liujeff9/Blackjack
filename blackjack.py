@@ -1,5 +1,6 @@
 import bet as b
 from hands import PlayerHand, DealerHand
+from deck import Deck
 
 def play_blackjack():
     print()
@@ -19,10 +20,12 @@ def play_blackjack():
         curr_bet = b.get_bet(total_amount)
         print()
 
-        player_hand = PlayerHand()
+        # create a deck and the player's hand
+        deck = Deck()
+        player_hand = PlayerHand(deck)
 
         while (True):
-            print("Your hand is: " + player_hand.print_hand())
+            print("Your hand is: " + player_hand.get_hand())
             player_score = player_hand.get_score()
             
             # auto win if the player is dealt a hand of 21
@@ -39,13 +42,13 @@ def play_blackjack():
                 print("Stay, your score is: " + str(player_score))
                 
                 # get the dealer's hand
-                dealer_hand = DealerHand()
+                dealer_hand = DealerHand(deck)
                 dealer_score = dealer_hand.play()
                 print()
-                print("The dealer's hand is: " + dealer_hand.print_hand())
+                print("The dealer's hand is: " + dealer_hand.get_hand())
                 print("The dealer's score is: " + str(dealer_score))
 
-                # check the winner of the given hand
+                # check the winner by comparing hands, player loses on tie
                 if dealer_score > 21:
                     game_status = 1
                     print("Dealer busted, you win!")
@@ -54,7 +57,6 @@ def play_blackjack():
                     print("You win!")
                 else:
                     print("You lose")
-
                 break
                 
             else:
@@ -69,7 +71,7 @@ def play_blackjack():
 
                 # check the user wins with 21 or busts
                 if player_score > 21:
-                    print("Your hand is: " + player_hand.print_hand())
+                    print("Your hand is: " + player_hand.get_hand())
                     print("Your score is: " + str(player_score))
                     print("Bust, you lose")
                     break
