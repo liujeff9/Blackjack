@@ -1,30 +1,7 @@
 import random
 
-# given a list, find the score of the given hand
-def get_score(cards):
-    score = 0
-    ace = False
-    for card in cards:
-        if deck_of_cards[card] == 1:
-            ace = True
-        score += deck_of_cards[card]
-    
-    if score < 12 and ace:
-        score += 10
-    return score
-
-# randomizes the order of the deck of cards
-def shuffle_deck():
-    l = list(deck_of_cards.keys())
-    random.shuffle(l)
-    return l
-
-# return one card from the top of the deck
-def deal_card():
-    return current_deck.pop()
-
-
-deck_of_cards = { "2 of Diamonds": 2, "2 of Clubs": 2, "2 of Hearts": 2, "2 of Spades": 2,
+class Deck():
+    deck_of_cards = { "2 of Diamonds": 2, "2 of Clubs": 2, "2 of Hearts": 2, "2 of Spades": 2,
         "3 of Diamonds": 3, "3 of Clubs": 3, "3 of Hearts": 3, "3 of Spades": 3, 
         "4 of Diamonds": 4, "4 of Clubs": 4, "4 of Hearts": 4, "4 of Spades": 4, 
         "5 of Diamonds": 5, "5 of Clubs": 5, "5 of Hearts": 5, "5 of Spades": 5, 
@@ -38,4 +15,20 @@ deck_of_cards = { "2 of Diamonds": 2, "2 of Clubs": 2, "2 of Hearts": 2, "2 of S
         "K of Diamonds": 10, "K of Clubs": 10, "K of Hearts": 10, "K of Spades": 10,
         "A of Diamonds": 1, "A of Clubs": 1, "A of Hearts": 1, "A of Spades": 1,
         }
-current_deck = shuffle_deck()
+    
+    def __init__():
+        self.current_deck = self.shuffle_deck()
+
+
+# given a list, find the score of the given hand
+def get_score(cards):
+    score = 0
+    ace = False
+    for card in cards:
+        if deck_of_cards[card] == 1:
+            ace = True
+        score += deck_of_cards[card]
+    
+    if score < 12 and ace:
+        score += 10
+    return score
